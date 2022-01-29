@@ -19,8 +19,11 @@ async def on_ready():
 async def on_message(msg: discord.Message): 
     if msg.channel.id in edit_channels.get_channels_list()[0] and not msg.webhook_id:
         for id in edit_channels.get_linked_channels(msg.channel.id):
-            whook_url = await webhook_utils.create_webhook_if_not_exist(bot, id)
-            webhook_utils.send_with_webhook(whook_url, msg.content, msg.guild.name, msg.author.name,  msg.author.avatar_url, msg.attachments)
+            try:
+                whook_url = await webhook_utils.create_webhook_if_not_exist(bot, id)
+                webhook_utils.send_with_webhook(whook_url, msg.content, msg.guild.name, msg.author.name,  msg.author.avatar_url, msg.attachments)
+            except:
+                print(f"Error in {id}"}
 
 @bot.event
 async def on_message_delete(msg: discord.Message):
