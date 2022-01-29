@@ -12,7 +12,7 @@ async def create_webhook_if_not_exist(client, id: int) -> str:
         
 def send_with_webhook(url, content, server, name,  avatar_url, attachaments):
     allowed_mentions = {
-        "parse": []
+        "parse": ["users"]
     }
     webhook = DiscordWebhook(url=url, content=content, username=f"{name} | {server}", avatar_url=f"{avatar_url}", allowed_mentions=allowed_mentions)
     if attachaments:
