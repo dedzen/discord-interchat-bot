@@ -23,7 +23,7 @@ async def on_message(msg: discord.Message):
                 whook_url = await webhook_utils.create_webhook_if_not_exist(bot, id)
                 webhook_utils.send_with_webhook(whook_url, msg.content, msg.guild.name, msg.author.name,  msg.author.avatar_url, msg.attachments)
             except:
-                print(f"Error in {id}"}
+                print(f"Error in {id}")
 
 @bot.event
 async def on_message_delete(msg: discord.Message):
