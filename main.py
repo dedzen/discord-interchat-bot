@@ -12,6 +12,10 @@ intents.messages = True
 bot = commands.Bot(command_prefix="e.", intents=intents)
 
 @bot.event
+async def on_ready():
+    print("launched")
+
+@bot.event
 async def on_message(msg: discord.Message): 
     if msg.channel.id in edit_channels.get_channels_list()[0] and not msg.webhook_id:
         for id in edit_channels.get_linked_channels(msg.channel.id):
