@@ -4,6 +4,7 @@ regexp = re.compile(r"^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:|w
 
 
 async def create_webhook_if_not_exist(client, id: int) -> str: 
+    """Возвращает ссылку на вебхук, если его нет - создает"""
     channel = await client.fetch_channel(id)
     webhooks = await channel.webhooks()
     if webhooks:
@@ -13,6 +14,7 @@ async def create_webhook_if_not_exist(client, id: int) -> str:
 
         
 def send_with_webhook(url, content, server, name,  avatar_url, attachaments):
+    # Отправляет сообщение с заданным текстом, аватаркой, ником, именем сервера
     allowed_mentions = {
         "parse": ["users"]  # разрешаем пинговать только людей
     }
